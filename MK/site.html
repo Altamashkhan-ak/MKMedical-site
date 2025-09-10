@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.2.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+  <h1>🌿 Herbs & Ayurveda Healing Hub</h1>
+  <p>Discover natural remedies for common ailments through the wisdom of Ayurveda</p>
+</header>
+
+<div class="search-section">
+  <h2>Search for a Disease</h2>
+  <input type="text" id="searchBox" placeholder="e.g. Diabetes, Acne, Cold">
+  <button onclick="searchDisease()">Search</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+const remedies = {
+  "diabetes": {
+    overview: "A metabolic disorder affecting blood sugar levels.",
+    herbs: ["Guduchi", "Turmeric", "Fenugreek"],
+    tips: "Eat bitter vegetables, avoid sugar, practice yoga daily."
+  },
+  "acne": {
+    overview: "Skin condition caused by clogged pores and inflammation.",
+    herbs: ["Neem", "Manjistha", "Aloe Vera"],
+    tips: "Use herbal face packs, avoid oily food, stay hydrated."
+  },
+  "cold": {
+    overview: "A viral infection affecting the respiratory tract.",
+    herbs: ["Tulsi", "Ginger", "Black Pepper"],
+    tips: "Drink warm herbal teas, inhale steam, rest well."
+  }
+};
+
+function searchDisease() {
+  const input = document.getElementById("searchBox").value.toLowerCase();
+  const result = remedies[input];
+  const output = document.getElementById("result");
+
+  if (result) {
+    output.innerHTML = `
+      <h3>${input.charAt(0).toUpperCase() + input.slice(1)}</h3>
+      <p><strong>Overview:</strong> ${result.overview}</p>
+      <p><strong>Recommended Herbs:</strong> ${result.herbs.join(", ")}</p>
+      <p><strong>Ayurvedic Tips:</strong> ${result.tips}</p>
+    `;
+  } else {
+    output.innerHTML = `<p>No information found for "<strong>${input}</strong>". Try another disease.</p>`;
+  }
+}
+</script>
+</body>
+</html>
